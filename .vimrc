@@ -1,21 +1,50 @@
 "-----------------------------------------------------------
 "vundleに関する設定
 "-----------------------------------------------------------
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set nocompatible
+"filetype off
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+"Plugin 'VundleVim/Vundle.vim'
 
 " 導入したいプラグインを以下に列挙
 " Plugin '[Github Author]/[Github repo]' の形式で記入
-Plugin 'airblade/vim-gitgutter'
-Plugin 'thinca/vim-quickrun'
-Plugin 'scrooloose/nerdtree'
-Plugin 'davidhalter/jedi-vim'
-call vundle#end()
-filetype plugin indent on
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'thinca/vim-quickrun'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'davidhalter/jedi-vim'
+"call vundle#end()
+"filetype plugin indent on
+
+
+"-----------------------------------------------------------
+"dein.vimに関する設定
+"-----------------------------------------------------------
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+call dein#begin(expand('~/.vim/dein'))
+
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('scrooloose/nerdtree')
+
+call dein#add('airblade/vim-gitgutter')
+call dein#add('thinca/vim-quickrun')
+call dein#add('scrooloose/nerdtree')
+call dein#add('davidhalter/jedi-vim')
+"call dein#add('')
+" (中略)
+
+call dein#end()
+
+
+
+
+
 
 "　その他のカスタム設定を以下に書く
 "------------------------------------------------------------
@@ -24,9 +53,15 @@ filetype plugin indent on
 scriptencoding utf-8
 set fenc=utf-8
 set tabstop=4 "インデントをスペース4つに設定
+set shiftwidth=4
+set softtabstop=4
+set smarttab
 syntax on "シンタックスハイライトを有効
 set showmatch "相関するカッコを強調表示
 set hlsearch "検索結果をハイライト 
+set mouse=a "マウスの有効化
+set clipboard=unnamedplus "クリップボード有効化
+set autoindent "オートインデントの設定
 "------------------------------------------------------------
 "見た目設定
 "------------------------------------------------------------
@@ -42,13 +77,6 @@ set ignorecase
 set smartcase
 set wrapscan
 set incsearch
-"------------------------------------------------------------
-"見た目設定
-"------------------------------------------------------------
-set number
-set cursorline
-"set cusorcolum
-set virtualedit=onemore
 "------------------------------------------------------------
 "インサートモード中のキー割り当て
 "------------------------------------------------------------
