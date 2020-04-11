@@ -84,13 +84,18 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+inoremap ( ()<LEFT>
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
 inoremap <silent> jk <Esc>
 inoremap <silent> ｊｋ <Esc>
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-
+"------------------------------------------------------------
+"ノーマルモード中のキー割り当て
+"------------------------------------------------------------
 
 "--------------------------------------------------------------
 "オートコンパイル用の設定
@@ -104,7 +109,16 @@ augroup setAutoCompile
    "autocmd BufWritePost *.R :!R -f %:p
 augroup END
 
+"-------------------------------------------------------------
+"自作関数
+"-------------------------------------------------------------
+function! s:Forloop(n)
+	let tamesi = printf("%d",a:n)
+	echo tamesi
+	execute "normal a"."for(int i=0;i<".tamesi.";i++"
+endfunction
 
+command! -nargs=1 Fl call s:Forloop(<f-args>)
 "--------------------------------------------------------------
 "jedi補完用の設定
 "--------------------------------------------------------------
