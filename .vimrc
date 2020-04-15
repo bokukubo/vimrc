@@ -114,8 +114,8 @@ augroup END
 "-------------------------------------------------------------
 function! s:Forloop(n)
 	let tamesi = printf("%d",a:n)
-	echo tamesi
-	execute "normal a"."for(int i=0;i<".tamesi.";i++"
+	let tamesi2 = type(tamesi)
+	execute "normal a"."for(int i=0;i<".tamesi2.";i++"
 endfunction
 
 command! -nargs=1 Fl call s:Forloop(<f-args>)
